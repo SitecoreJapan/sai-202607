@@ -55,7 +55,7 @@ function resolveSiteUrl(req: NextApiRequest): string {
     return `${protoStr}://${hostStr}`;
   }
 
-  const defaultSite = sites?.[0];
+  const defaultSite = sites?.[0] ?? "demo";
   if (defaultSite?.hostName) {
     return `https://${defaultSite.hostName}`;
   }
