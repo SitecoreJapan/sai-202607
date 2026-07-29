@@ -55,10 +55,10 @@ function resolveSiteUrl(req: NextApiRequest): string {
     return `${protoStr}://${hostStr}`;
   }
 
-  const defaultSite = sites?.[0] ?? "demo";
-  if (defaultSite?.hostName) {
-    return `https://${defaultSite.hostName}`;
-  }
+  // const defaultSite = sites?.[0];
+  // if (defaultSite?.hostName) {
+  //   return `https://${defaultSite.hostName}`;
+  // }
 
   return 'https://localhost:3000';
 }
