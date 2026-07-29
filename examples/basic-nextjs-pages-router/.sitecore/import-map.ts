@@ -7,14 +7,18 @@ import {
 } from '@sitecore-content-sdk/nextjs/codegen';
 // end of built-in imports
 
-import { jsx, Fragment } from 'react/jsx-runtime';
-import { Placeholder, CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
+import { Placeholder, NextImage, Text, Link, CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { forwardRef, useEffect } from 'react';
+import React from 'react';
+import { CompatibleLink } from 'components/content-sdk/CompatibleLink';
+import { getFieldValue } from 'lib/component-props';
 import Head from 'next/head';
 import client from 'lib/sitecore-client';
 import Image from 'next/image';
 import * as FEAAS from '@sitecore-feaas/clientside/react';
 import nextConfig from 'next.config';
-import { useEffect } from 'react';
+import NextLink from 'next/link';
 import { pageView } from '@sitecore-content-sdk/events';
 import config from 'sitecore.config';
 
@@ -23,6 +27,7 @@ const importMap = [
     module: 'react/jsx-runtime',
     exports: [
       { name: 'jsx', value: jsx },
+      { name: 'jsxs', value: jsxs },
       { name: 'Fragment', value: Fragment },
     ]
   },
@@ -30,8 +35,31 @@ const importMap = [
     module: '@sitecore-content-sdk/nextjs',
     exports: [
       { name: 'Placeholder', value: Placeholder },
+      { name: 'NextImage', value: NextImage },
+      { name: 'Text', value: Text },
+      { name: 'Link', value: Link },
       { name: 'CdpHelper', value: CdpHelper },
       { name: 'useSitecore', value: useSitecore },
+    ]
+  },
+  {
+    module: 'react',
+    exports: [
+      { name: 'forwardRef', value: forwardRef },
+      { name: 'useEffect', value: useEffect },
+      { name: 'default', value: React },
+    ]
+  },
+  {
+    module: 'components/content-sdk/CompatibleLink',
+    exports: [
+      { name: 'CompatibleLink', value: CompatibleLink },
+    ]
+  },
+  {
+    module: 'lib/component-props',
+    exports: [
+      { name: 'getFieldValue', value: getFieldValue },
     ]
   },
   {
@@ -65,9 +93,9 @@ const importMap = [
     ]
   },
   {
-    module: 'react',
+    module: 'next/link',
     exports: [
-      { name: 'useEffect', value: useEffect },
+      { name: 'default', value: NextLink },
     ]
   },
   {
