@@ -6,6 +6,7 @@ import React from "react";
 import { CompatibleLink } from "components/content-sdk/CompatibleLink";
 import { getFieldValue } from 'lib/component-props';
 import { ImageProps, ImageWrapperProps } from './image.props';
+import  Image from 'next/image';
 
 const ImageWrapper: React.FC<ImageWrapperProps> = ({ className, id, children }) => (
   <figure className={className.trim()} id={id}>
@@ -70,7 +71,8 @@ export const Default: React.FC<ImageProps> = (props) => {
   const Image = () => (
     <ContentSdkImage
       field={imageField}
-      sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 90vw, 1200px"
+      sizes="(max-width: 640px) 100vw"
+      //  sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 90vw, 1200px"
       alt={
         typeof imageField?.value?.alt === "string"
           ? imageField.value.alt
@@ -96,3 +98,4 @@ export const Default: React.FC<ImageProps> = (props) => {
     </ImageWrapper>
   );
 };
+
