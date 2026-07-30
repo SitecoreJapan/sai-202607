@@ -47,7 +47,7 @@ export const Banner: React.FC<ImageProps> = ({ params, fields }) => {
   const imageField = fields.Image && {
     ...fields.Image,
     value: {
-      ...fields.Image.value,
+      ...fields.Image.value, 
       style: { width: '100%', height: '100%' },
     },
   };
@@ -70,6 +70,7 @@ export const Default: React.FC<ImageProps> = (props) => {
     return <ImageDefault {...props} />;
   }
 
+  console.log('Image fields:', fields.Image);
   const Image = () => <ContentSdkImage field={fields.Image} />;
   const shouldWrapWithLink = !page.mode.isEditing && fields.TargetUrl?.value?.href;
 
