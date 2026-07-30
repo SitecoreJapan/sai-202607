@@ -27,7 +27,7 @@ export const Default: React.FC<ImageProps> = (props) => {
       alt={'myimage'}
       width={Number(fields?.Image?.value?.width)}
       height={Number(fields?.Image?.value?.height)}
-      sizes="(max-width: 640px) 100vw"
+      sizes="(max-width: 640px) 100vw, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1440px) 1280px, 1920px"
     />
   );
 };
