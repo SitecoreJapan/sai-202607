@@ -26,6 +26,7 @@ const nextConfig = {
   // can be served from the Next.js Image Optimization API
   // see https://nextjs.org/docs/app/api-reference/components/image#remotepatterns
   images: {
+    minimumCacheTTL: 60, // 60秒
     remotePatterns: [
       {
         protocol: 'https',
