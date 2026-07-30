@@ -73,7 +73,8 @@ export const Default: React.FC<ImageProps> = (props) => {
   console.log('Image fields:', fields.Image);
   const Image = () => <ContentSdkImage field={fields.Image} />;
   const shouldWrapWithLink = !page.mode.isEditing && fields.TargetUrl?.value?.href;
-
+  console.log('shouldWrapWithLink:', shouldWrapWithLink);
+  
   return (
     <ImageWrapper className={`component image ${styles}`} id={id}>
       {shouldWrapWithLink ? (
