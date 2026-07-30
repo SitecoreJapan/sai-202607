@@ -1,5 +1,5 @@
 export function register() {
-  if (process.env.NEXT_RUNTIME === 'nodejs') {
+ // if (process.env.NEXT_RUNTIME === 'nodejs') {
     const originalSort = Array.prototype.sort;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     Array.prototype.sort = function (...args: any[]) {
@@ -10,5 +10,5 @@ export function register() {
       }
       return originalSort.apply(this, args);
     };
-  }
+ // }
 }
