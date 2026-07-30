@@ -6,7 +6,6 @@ import React from "react";
 import { CompatibleLink } from "components/content-sdk/CompatibleLink";
 import { getFieldValue } from 'lib/component-props';
 import { ImageProps, ImageWrapperProps } from './image.props';
-import  Image from 'next/image';
 
 const ImageWrapper: React.FC<ImageWrapperProps> = ({ className, id, children }) => (
   <figure className={className.trim()} id={id}>
