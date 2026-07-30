@@ -69,7 +69,7 @@ export const Default: React.FC<ImageProps> = (props) => {
 
   const Image = () => (
     <ContentSdkImage
-      field={fields.Image}
+      field={imageField}
       sizes="(max-width: 640px) 100vw"
       //  sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 90vw, 1200px"
       alt={
