@@ -2,34 +2,16 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "components/*": [
-        "src/components/*"
-      ],
-      "lib/*": [
-        "src/lib/*"
-      ],
-      "temp/*": [
-        "src/temp/*"
-      ],
-      "assets/*": [
-        "src/assets/*"
-      ],
-      ".sitecore/*": [
-        ".sitecore/*"
-      ],
-      "next/*": [
-        "node_modules/next/*"
-      ],
-      "@/*": [
-        "./src/*"
-      ]
+      "components/*": ["src/components/*"],
+      "lib/*": ["src/lib/*"],
+      "temp/*": ["src/temp/*"],
+      "assets/*": ["src/assets/*"],
+      ".sitecore/*": [".sitecore/*"],
+      "next/*": ["node_modules/next/*"],
+      "@/*": ["./src/*"]
     },
     "target": "ES2017",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -56,7 +38,5 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
