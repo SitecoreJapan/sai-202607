@@ -13,6 +13,11 @@ import { NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { getBaseUrl } from "src/lib/utils";
 
+// ISR segment config must be statically analyzable in Next.js.
+export const revalidate = 5;
+// Allow on-demand rendering of paths not generated at build time.
+export const dynamicParams = true;
+
 type PageProps = {
   params: Promise<{
     site: string;
@@ -89,7 +94,7 @@ export const generateStaticParams = async () => {
 // Metadata fields for the page.
 export const generateMetadata = async ({ params }: PageProps) => {
   const baseUrl = getBaseUrl();
-  
+
   const { path, site, locale } = await params;
 
   // Canonical URL: base URL + content path only (no site/locale segments)
