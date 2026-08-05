@@ -5,7 +5,7 @@ import { Form } from '@sitecore-content-sdk/nextjs';
 
 // end of built-in components
 import * as PartialDesignDynamicPlaceholder from 'src/components/partial-design-dynamic-placeholder/PartialDesignDynamicPlaceholder';
-import * as Image from 'src/components/image/Image';
+import * as Image from 'components/image/ImageBK2';
 import * as imageprops from 'src/components/image/image.props';
 
 export const componentMap = new Map<string, NextjsContentSdkComponent>([
@@ -18,3 +18,4 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
 ]);
 
 export default componentMap;
+
