@@ -1,9 +1,6 @@
-import {
-  NextImage as ContentSdkImage,
-  Text,
-} from "@sitecore-content-sdk/nextjs";
-import React from "react";
-import { CompatibleLink } from "components/content-sdk/CompatibleLink";
+import { NextImage as ContentSdkImage, Text } from '@sitecore-content-sdk/nextjs';
+import React from 'react';
+import { CompatibleLink } from 'components/content-sdk/CompatibleLink';
 import { getFieldValue } from 'lib/component-props';
 import { ImageProps, ImageWrapperProps } from './image.props';
 
@@ -26,23 +23,24 @@ export const Banner: React.FC<ImageProps> = ({ params, fields }) => {
     ...baseImageField,
     value: {
       ...baseImageField.value,
-      style: { objectFit: "cover", width: "100%", height: "100%" },
+      style: { objectFit: 'cover', width: '100%', height: '100%' },
     },
   };
 
   const altText =
-    typeof baseImageField?.value?.alt === "string"
-      ? baseImageField.value.alt
-      : "Hero banner";
+    typeof baseImageField?.value?.alt === 'string' ? baseImageField.value.alt : 'Hero banner';
 
   // Use pixel caps per breakpoint so the browser picks the next-lowest srcset width
   // instead of 100vw (which with DPR can still request 1920px on ~1319px viewport).
   // This fixes mobile/tablet overserving (e.g. 1920px image when displayed at 1319px).
   const bannerSizes =
-    "(max-width: 640px) 100vw, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1440px) 1280px, 1920px";
+    '(max-width: 640px) 100vw, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1440px) 1280px, 1920px';
 
   return (
-    <figure className={`component hero-banner ${styles}`.trim()} id={typeof id === "string" ? id : undefined}>
+    <figure
+      className={`component hero-banner ${styles}`.trim()}
+      id={typeof id === 'string' ? id : undefined}
+    >
       <div className="component-content sc-sxa-image-hero-banner">
         <ContentSdkImage
           field={imageField}
@@ -72,18 +70,16 @@ export const Default: React.FC<ImageProps> = (props) => {
       field={imageField}
       sizes="(max-width: 640px) 100vw"
       //  sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 90vw, 1200px"
-      alt={
-        typeof imageField?.value?.alt === "string"
-          ? imageField.value.alt
-          : ""
-      }
+      alt={typeof imageField?.value?.alt === 'string' ? imageField.value.alt : ''}
     />
   );
-  const shouldWrapWithLink =
-    !page?.mode?.isEditing && targetUrlField?.value?.href;
+  const shouldWrapWithLink = !page?.mode?.isEditing && targetUrlField?.value?.href;
 
   return (
-    <ImageWrapper className={`component image ${styles}`} id={typeof id === "string" ? id : undefined}>
+    <ImageWrapper
+      className={`component image ${styles}`}
+      id={typeof id === 'string' ? id : undefined}
+    >
       {shouldWrapWithLink ? (
         <CompatibleLink field={targetUrlField}>
           <Image />
@@ -97,4 +93,3 @@ export const Default: React.FC<ImageProps> = (props) => {
     </ImageWrapper>
   );
 };
-
