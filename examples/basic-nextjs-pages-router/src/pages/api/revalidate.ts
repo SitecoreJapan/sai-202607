@@ -6,7 +6,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   console.log('Revalidation request received with pagename:', pagename);
 
   try {
-    await res.revalidate(`/${pagename}`);
+    await res.revalidate(`/en/${pagename}`);
 
     return res.json({ revalidated: true });
   } catch (err) {
