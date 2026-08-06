@@ -8,14 +8,14 @@ import {
 // end of built-in imports
 
 import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
-import { Placeholder, NextImage, Text, Link, CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { Placeholder, NextImage, Text, DefaultEmptyFieldEditingComponentImage, useSitecore, Link, CdpHelper } from '@sitecore-content-sdk/nextjs';
 import { forwardRef, useEffect } from 'react';
 import React from 'react';
 import { CompatibleLink } from 'components/content-sdk/CompatibleLink';
 import { getFieldValue } from 'lib/component-props';
+import Image from 'next/image';
 import Head from 'next/head';
 import client from 'lib/sitecore-client';
-import Image from 'next/image';
 import * as FEAAS from '@sitecore-feaas/clientside/react';
 import nextConfig from 'next.config';
 import NextLink from 'next/link';
@@ -37,9 +37,10 @@ const importMap = [
       { name: 'Placeholder', value: Placeholder },
       { name: 'NextImage', value: NextImage },
       { name: 'Text', value: Text },
+      { name: 'DefaultEmptyFieldEditingComponentImage', value: DefaultEmptyFieldEditingComponentImage },
+      { name: 'useSitecore', value: useSitecore },
       { name: 'Link', value: Link },
       { name: 'CdpHelper', value: CdpHelper },
-      { name: 'useSitecore', value: useSitecore },
     ]
   },
   {
@@ -63,6 +64,12 @@ const importMap = [
     ]
   },
   {
+    module: 'next/image',
+    exports: [
+      { name: 'default', value: Image },
+    ]
+  },
+  {
     module: 'next/head',
     exports: [
       { name: 'default', value: Head },
@@ -72,12 +79,6 @@ const importMap = [
     module: 'lib/sitecore-client',
     exports: [
       { name: 'default', value: client },
-    ]
-  },
-  {
-    module: 'next/image',
-    exports: [
-      { name: 'default', value: Image },
     ]
   },
   {
