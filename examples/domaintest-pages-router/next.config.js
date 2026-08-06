@@ -35,6 +35,11 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'media.leicompanysai.com*',
+        port: '',
+      },
+      {
+        protocol: 'https',
         hostname: 'xmc-*.**',
         port: '',
       },
