@@ -35,4 +35,5 @@ export default defineConfig({
     edgeTimeout: parseInt(process.env.PERSONALIZE_MIDDLEWARE_EDGE_TIMEOUT!, 10),
     cdpTimeout: parseInt(process.env.PERSONALIZE_MIDDLEWARE_EDGE_TIMEOUT!, 10),
   },
+  rewriteMediaUrls: true,
 });
