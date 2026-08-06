@@ -35,7 +35,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'media.leicompanysai.com*',
+        hostname: 'media.leicompanysai.com',
         port: '',
       },
       {
