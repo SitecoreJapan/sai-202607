@@ -50,6 +50,11 @@ const nextConfig = {
 
   async rewrites() {
     return [
+      {
+        source: '/mymedia/:path*',
+        destination:
+          'https://media.leicompanysai.com/sitecoresaa27d4-sai2026070698-dev48c1-2d4c/media/Project/demo/:path',
+      },
       // healthz check
       {
         source: '/healthz',
