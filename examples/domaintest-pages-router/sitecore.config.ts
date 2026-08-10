@@ -36,7 +36,7 @@ export default defineConfig({
     cdpTimeout: parseInt(process.env.PERSONALIZE_MIDDLEWARE_EDGE_TIMEOUT!, 10),
   },
   rewriteMediaUrls: function rewriteEdgeHostInString(str: string): string {
-    const customEdgeUrl = 'media.leicompanysai.com/v1/media/edge/images';
+    const customEdgeUrl = '';
     const EDGE_HOST_PATTERN = new RegExp('sitecoresaa27d4-sai2026070698-dev48c1-2d4c', 'gi');
     return str.replace(EDGE_HOST_PATTERN, customEdgeUrl);
   },
