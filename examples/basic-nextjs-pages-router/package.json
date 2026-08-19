@@ -23,9 +23,9 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@sitecore-content-sdk/analytics-core": "^2.1.0",
-    "@sitecore-content-sdk/personalize": "^2.1.0",
     "@sitecore-content-sdk/events": "^2.1.0",
     "@sitecore-content-sdk/nextjs": "^2.2.0",
+    "@sitecore-content-sdk/personalize": "^2.1.0",
     "@sitecore-feaas/clientside": "^0.6.0",
     "@sitecore/components": "~2.1.0",
     "font-awesome": "^4.7.0",
@@ -51,6 +51,7 @@
     "eslint-plugin-prettier": "^5.4.0",
     "eslint-plugin-react": "^7.37.5",
     "npm-run-all2": "^8.0.4",
+    "patch-package": "^8.0.1",
     "postcss": ">=8.5.10",
     "prettier": "3.6.2",
     "tailwindcss": "^4",
@@ -85,6 +86,7 @@
     "sitecore-tools:generate-map:watch": "sitecore-tools project component generate-map --watch",
     "sitecore-tools:build": "sitecore-tools project build",
     "dev": "cross-env NODE_ENV=development npm-run-all --serial sitecore-tools:build --parallel next:dev sitecore-tools:generate-map:watch",
-    "start": "cross-env-shell NODE_ENV=production npm-run-all --serial build next:start"
+    "start": "cross-env-shell NODE_ENV=production npm-run-all --serial build next:start",
+    "postinstall": "patch-package"
   }
 }
