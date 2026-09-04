@@ -73,6 +73,7 @@ export async function fetchImageFromOrigin(
 
   let response: Response;
   try {
+    console.log(`[fetchImageFromOrigin] fetching image from origin: ${url}`);
     response = await fetch(url, {
       signal: controller.signal,
       // オリジン側のCDN/キャッシュを効かせるため、Next.js fetchの独自キャッシュは無効化
@@ -149,13 +150,12 @@ function buildOriginUrl(imagePath: string, searchParams?: Record<string, string>
   const isAbsoluteUrl = /^https?:\/\//i.test(imagePath);
 
   if (!isAbsoluteUrl && !ORIGIN_BASE_URL) {
-    throw new FetchImageError(
-      '環境変数 IMAGE_ORIGIN_BASE_URL が設定されていません',
-      500
-    );
+    throw new FetchImageError('環境変数 IMAGE_ORIGIN_BASE_URL が設定されていません', 500);
   }
 
-  const base = isAbsoluteUrl ? imagePath : `${ORIGIN_BASE_URL}${imagePath.startsWith('/') ? '' : '/'}${imagePath}`;
+  const base = isAbsoluteUrl
+    ? imagePath
+    : `${ORIGIN_BASE_URL}${imagePath.startsWith('/') ? '' : '/'}${imagePath}`;
 
   const url = new URL(base);
   if (searchParams) {
@@ -166,3 +166,4 @@ function buildOriginUrl(imagePath: string, searchParams?: Record<string, string>
 
   return url.toString();
 }
+

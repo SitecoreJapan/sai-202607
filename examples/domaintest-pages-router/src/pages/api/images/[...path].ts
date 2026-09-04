@@ -46,6 +46,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   );
 
   try {
+    console.log(`[api/images] fetching image from origin: ${imagePath}, params:`, forwardParams);
     const { buffer, contentType, etag } = await fetchImageFromOrigin(imagePath, {
       searchParams: forwardParams,
     });
