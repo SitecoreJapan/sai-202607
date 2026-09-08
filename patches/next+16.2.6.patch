@@ -1,0 +1,90 @@
+diff --git a/node_modules/next/dist/client/image-component.js b/node_modules/next/dist/client/image-component.js
+index 2b0ca35..e4db8e4 100644
+--- a/node_modules/next/dist/client/image-component.js
++++ b/node_modules/next/dist/client/image-component.js
+@@ -243,8 +243,8 @@ const Image = /*#__PURE__*/ (0, _react.forwardRef)((props, forwardedRef)=>{
+             ...c.deviceSizes,
+             ...c.imageSizes
+         ].sort((a, b)=>a - b);
+-        const deviceSizes = c.deviceSizes.sort((a, b)=>a - b);
+-        const qualities = c.qualities?.sort((a, b)=>a - b);
++        const deviceSizes = [...c.deviceSizes].sort((a, b)=>a - b);
++        const qualities = c.qualities ? [...c.qualities].sort((a, b)=>a - b) : undefined;
+         return {
+             ...c,
+             allSizes,
+diff --git a/node_modules/next/dist/client/legacy/image.js b/node_modules/next/dist/client/legacy/image.js
+index fab8210..d15d132 100644
+--- a/node_modules/next/dist/client/legacy/image.js
++++ b/node_modules/next/dist/client/legacy/image.js
+@@ -453,8 +453,8 @@ function Image({ src, sizes, unoptimized = false, priority = false, loading, laz
+             ...c.deviceSizes,
+             ...c.imageSizes
+         ].sort((a, b)=>a - b);
+-        const deviceSizes = c.deviceSizes.sort((a, b)=>a - b);
+-        const qualities = c.qualities?.sort((a, b)=>a - b);
++        const deviceSizes = [...c.deviceSizes].sort((a, b)=>a - b);
++        const qualities = c.qualities ? [...c.qualities].sort((a, b)=>a - b) : undefined;
+         return {
+             ...c,
+             allSizes,
+diff --git a/node_modules/next/dist/esm/client/image-component.js b/node_modules/next/dist/esm/client/image-component.js
+index c87412e..d8eac96 100644
+--- a/node_modules/next/dist/esm/client/image-component.js
++++ b/node_modules/next/dist/esm/client/image-component.js
+@@ -236,8 +236,8 @@ function ImagePreload({ isAppRouter, imgAttributes }) {
+             ...c.deviceSizes,
+             ...c.imageSizes
+         ].sort((a, b)=>a - b);
+-        const deviceSizes = c.deviceSizes.sort((a, b)=>a - b);
+-        const qualities = c.qualities?.sort((a, b)=>a - b);
++        const deviceSizes = [...c.deviceSizes].sort((a, b)=>a - b);
++        const qualities = c.qualities ? [...c.qualities].sort((a, b)=>a - b) : undefined;
+         return {
+             ...c,
+             allSizes,
+diff --git a/node_modules/next/dist/esm/client/legacy/image.js b/node_modules/next/dist/esm/client/legacy/image.js
+index 114261a..ec0b418 100644
+--- a/node_modules/next/dist/esm/client/legacy/image.js
++++ b/node_modules/next/dist/esm/client/legacy/image.js
+@@ -441,8 +441,8 @@ const ImageElement = ({ imgAttributes, heightInt, widthInt, qualityInt, layout,
+             ...c.deviceSizes,
+             ...c.imageSizes
+         ].sort((a, b)=>a - b);
+-        const deviceSizes = c.deviceSizes.sort((a, b)=>a - b);
+-        const qualities = c.qualities?.sort((a, b)=>a - b);
++        const deviceSizes = [...c.deviceSizes].sort((a, b)=>a - b);
++        const qualities = c.qualities ? [...c.qualities].sort((a, b)=>a - b) : undefined;
+         return {
+             ...c,
+             allSizes,
+diff --git a/node_modules/next/dist/esm/shared/lib/get-img-props.js b/node_modules/next/dist/esm/shared/lib/get-img-props.js
+index cc4a613..efd69ad 100644
+--- a/node_modules/next/dist/esm/shared/lib/get-img-props.js
++++ b/node_modules/next/dist/esm/shared/lib/get-img-props.js
+@@ -148,8 +148,8 @@ function generateImgAttrs({ config, src, unoptimized, width, quality, sizes, loa
+             ...c.deviceSizes,
+             ...c.imageSizes
+         ].sort((a, b)=>a - b);
+-        const deviceSizes = c.deviceSizes.sort((a, b)=>a - b);
+-        const qualities = c.qualities?.sort((a, b)=>a - b);
++        const deviceSizes = [...c.deviceSizes].sort((a, b)=>a - b);
++        const qualities = c.qualities ? [...c.qualities].sort((a, b)=>a - b) : undefined;
+         config = {
+             ...c,
+             allSizes,
+diff --git a/node_modules/next/dist/shared/lib/get-img-props.js b/node_modules/next/dist/shared/lib/get-img-props.js
+index 79255fe..d1ee0cb 100644
+--- a/node_modules/next/dist/shared/lib/get-img-props.js
++++ b/node_modules/next/dist/shared/lib/get-img-props.js
+@@ -156,8 +156,8 @@ function getImgProps({ src, sizes, unoptimized = false, priority = false, preloa
+             ...c.deviceSizes,
+             ...c.imageSizes
+         ].sort((a, b)=>a - b);
+-        const deviceSizes = c.deviceSizes.sort((a, b)=>a - b);
+-        const qualities = c.qualities?.sort((a, b)=>a - b);
++        const deviceSizes = [...c.deviceSizes].sort((a, b)=>a - b);
++        const qualities = c.qualities ? [...c.qualities].sort((a, b)=>a - b) : undefined;
+         config = {
+             ...c,
+             allSizes,

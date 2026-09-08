@@ -51,7 +51,6 @@
     "eslint-plugin-prettier": "^5.4.0",
     "eslint-plugin-react": "^7.37.5",
     "npm-run-all2": "^8.0.4",
-    "patch-package": "^8.0.1",
     "postcss": ">=8.5.10",
     "prettier": "3.6.2",
     "tailwindcss": "^4",
@@ -86,7 +85,6 @@
     "sitecore-tools:generate-map:watch": "sitecore-tools project component generate-map --watch",
     "sitecore-tools:build": "sitecore-tools project build",
     "dev": "cross-env NODE_ENV=development npm-run-all --serial sitecore-tools:build --parallel next:dev sitecore-tools:generate-map:watch",
-    "start": "cross-env-shell NODE_ENV=production npm-run-all --serial build next:start",
-    "postinstall": "patch-package"
+    "start": "cross-env-shell NODE_ENV=production npm-run-all --serial build next:start"
   }
 }
