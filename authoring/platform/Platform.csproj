@@ -69,6 +69,7 @@
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="README.md" />
     <None Include="web.config" />
+    <Content Include="App_Config\Include\CustomSavingEvent.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Config\Include\" />
