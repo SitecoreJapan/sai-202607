@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import client from 'lib/sitecore-client';
+import client from 'lib/sitecore-client-styles';
 import { LayoutServiceData, HTMLLink } from '@sitecore-content-sdk/nextjs';
 
 /**
