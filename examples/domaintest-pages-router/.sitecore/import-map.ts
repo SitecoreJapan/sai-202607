@@ -8,7 +8,7 @@ import {
 // end of built-in imports
 
 import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
-import { Placeholder, NextImage, Text, DefaultEmptyFieldEditingComponentImage, useSitecore, Link, CdpHelper } from '@sitecore-content-sdk/nextjs';
+import { RichText, Placeholder, NextImage, Text, DefaultEmptyFieldEditingComponentImage, useSitecore, Link, CdpHelper } from '@sitecore-content-sdk/nextjs';
 import { forwardRef, useEffect } from 'react';
 import React from 'react';
 import { CompatibleLink } from 'components/content-sdk/CompatibleLink';
@@ -34,6 +34,7 @@ const importMap = [
   {
     module: '@sitecore-content-sdk/nextjs',
     exports: [
+      { name: 'RichText', value: RichText },
       { name: 'Placeholder', value: Placeholder },
       { name: 'NextImage', value: NextImage },
       { name: 'Text', value: Text },

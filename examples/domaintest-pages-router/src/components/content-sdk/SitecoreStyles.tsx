@@ -14,7 +14,14 @@ const SitecoreStyles = ({
   enableStyles?: boolean;
   enableThemes?: boolean;
 }) => {
+  //   const isEditing = layoutData.sitecore.context.pageEditing;
+
+  // const headLinks = client
+  //   .getHeadLinks(layoutData, { enableStyles, enableThemes })
+  //     .filter((link) => isEditing || !link.href.includes('content-styles.css'));
+
   const headLinks = client.getHeadLinks(layoutData, { enableStyles, enableThemes });
+  console.info('SitecoreStyles headLinks', headLinks);
 
   if (headLinks.length === 0) {
     return null;
