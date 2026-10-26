@@ -7,7 +7,8 @@ const client = new SitecoreClient({
     ...scConfig.api,
     edge: {
       ...scConfig.api.edge,
-      contextId: process.env.NEXT_PUBLIC_SITECORE_EDGE_CONTEXT_ID || '4FevT2aUV26g0mycqgemQW',
+      //contextId: process.env.NEXT_PUBLIC_SITECORE_EDGE_CONTEXT_ID || '4FevT2aUV26g0mycqgemQW',
+      contextId: '4FevT2aUV26g0mycqgemQW',
     },
   },
 });
