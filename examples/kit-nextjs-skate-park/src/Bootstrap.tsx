@@ -35,35 +35,35 @@ const Bootstrap = ({
     }
 
     // Cookie Consent を確認
-    const hasConsent = document.cookie
-      .split("; ")
-      .some((cookie) => cookie === "sitecore-cookie-consent=accepted");
+    // const hasConsent = document.cookie
+    //   .split("; ")
+    //   .some((cookie) => cookie === "sitecore-cookie-consent=accepted");
 
-    if (config.api.edge?.clientContextId) {
-      initContentSdk({
-        config: {
-          contextId: config.api.edge.clientContextId,
-          edgeUrl: config.api.edge.edgeUrl,
-          siteName: siteName || config.defaultSite,
-        },
-        plugins: [
-          analyticsPlugin({
-            options: {
-              enableCookie: hasConsent,
-              cookieDomain: window.location.hostname.replace(/^www\./, ""),
-            },
-            adapter: analyticsBrowserAdapter(),
-          }),
-          eventsPlugin(),
-          personalizeBrowserPlugin({
-            options: { enablePersonalizeCookie: hasConsent },
-            adapter: personalizeBrowserAdapter(),
-          }),
-        ],
-      });
-    } else {
-      console.error("Client Edge API settings missing from configuration");
-    }
+    // if (config.api.edge?.clientContextId) {
+    //   initContentSdk({
+    //     config: {
+    //       contextId: config.api.edge.clientContextId,
+    //       edgeUrl: config.api.edge.edgeUrl,
+    //       siteName: siteName || config.defaultSite,
+    //     },
+    //     plugins: [
+    //       analyticsPlugin({
+    //         options: {
+    //           enableCookie: hasConsent,
+    //           cookieDomain: window.location.hostname.replace(/^www\./, ""),
+    //         },
+    //         adapter: analyticsBrowserAdapter(),
+    //       }),
+    //       eventsPlugin(),
+    //       personalizeBrowserPlugin({
+    //         options: { enablePersonalizeCookie: hasConsent },
+    //         adapter: personalizeBrowserAdapter(),
+    //       }),
+    //     ],
+    //   });
+    // } else {
+    //   console.error("Client Edge API settings missing from configuration");
+    // }
   }, [siteName, isPreviewMode]);
 
   return null;

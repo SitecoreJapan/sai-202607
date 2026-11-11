@@ -1,8 +1,8 @@
-'use client';
-import { useEffect, JSX } from 'react';
-import { CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
-import { pageView } from '@sitecore-content-sdk/events';
-import config from 'sitecore.config';
+"use client";
+import { useEffect, JSX } from "react";
+import { CdpHelper, useSitecore } from "@sitecore-content-sdk/nextjs";
+import { pageView } from "@sitecore-content-sdk/events";
+import config from "sitecore.config";
 
 /**
  * This is the CDP page view component.
@@ -22,7 +22,8 @@ const CdpPageView = (): JSX.Element => {
    * By default it is disabled in development mode
    */
   const disabled = () => {
-    return process.env.NODE_ENV === 'development';
+    return true;
+    //return process.env.NODE_ENV === 'development';
   };
 
   useEffect(() => {
@@ -42,12 +43,12 @@ const CdpPageView = (): JSX.Element => {
       route.itemId,
       language,
       context.variantId as string,
-      scope
+      scope,
     );
     // there can be cases where Events are not initialized which are expected to reject
     pageView({
-      channel: 'WEB',
-      currency: 'USD',
+      channel: "WEB",
+      currency: "USD",
       page: route.name,
       pageVariantId,
       language,

@@ -11,7 +11,14 @@ import sites from ".sitecore/sites.json";
 import scConfig from "sitecore.config";
 import { routing } from "./i18n/routing";
 import client from "./lib/sitecore-client";
-
+import { initContentSdk } from "@sitecore-content-sdk/core";
+import { analyticsPlugin } from "@sitecore-content-sdk/analytics-core";
+import { eventsPlugin } from "@sitecore-content-sdk/events";
+import { personalizeServerPlugin } from "@sitecore-content-sdk/personalize";
+import {
+  analyticsProxyAdapter,
+  personalizeProxyAdapter,
+} from "@sitecore-content-sdk/nextjs";
 const preview = new PreviewProxy({
   client,
   ...scConfig.api.edge,
@@ -69,21 +76,56 @@ const personalize = new PersonalizeProxy({
   ...scConfig.api.edge,
   ...scConfig.personalize,
   // This function determines if the middleware should be turned off on per-request basis.
+  skip: () => false,
   // Certain paths are ignored by default (e.g. Next.js API routes), but you may wish to disable more.
   // By default it is disabled while in development mode.
   // This is an important performance consideration since Next.js Edge middleware runs on every request.
-  skip: (req: NextRequest) => {
-    const consent = req.cookies.get("sitecore-cookie-consent")?.value;
+  // skip: (req: NextRequest) => {
+  //   const consent = req.cookies.get("sitecore-cookie-consent")?.value;
 
-    // Consent が accepted でなければ PersonalizeProxy を skip
-    return consent !== "accepted";
-  },
+  //   // Consent が accepted でなければ PersonalizeProxy を skip
+  //   return consent !== "accepted";
+  // },
 });
 
-export default function proxy(req: NextRequest) {
-  return defineProxy(preview, locale, multisite, redirects, personalize).exec(
-    req,
-  );
+export default async function proxy(req: NextRequest) {
+  // return defineProxy(preview, locale, multisite, redirects, personalize).exec(
+  //   req,
+  // );
+
+  const response = await defineProxy(
+    preview,
+    locale,
+    multisite,
+    redirects,
+    personalize,
+  ).exec(req);
+
+  await initContentSdk({
+    config: {
+      contextId: process.env.SITECORE_EDGE_CONTEXT_ID!,
+      siteName: process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME!,
+    },
+    plugins: [
+      analyticsPlugin({
+        options: {
+          enableCookie: true,
+        },
+        adapter: analyticsProxyAdapter(req, response),
+      }),
+
+      eventsPlugin(),
+
+      personalizeServerPlugin({
+        options: {
+          enablePersonalizeCookie: true,
+        },
+        adapter: personalizeProxyAdapter(req, response),
+      }),
+    ],
+  });
+
+  return response;
 }
 
 export const config = {
