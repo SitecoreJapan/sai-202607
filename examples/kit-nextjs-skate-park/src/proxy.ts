@@ -76,56 +76,56 @@ const personalize = new PersonalizeProxy({
   ...scConfig.api.edge,
   ...scConfig.personalize,
   // This function determines if the middleware should be turned off on per-request basis.
-  skip: () => false,
+  //skip: () => false,
   // Certain paths are ignored by default (e.g. Next.js API routes), but you may wish to disable more.
   // By default it is disabled while in development mode.
   // This is an important performance consideration since Next.js Edge middleware runs on every request.
-  // skip: (req: NextRequest) => {
-  //   const consent = req.cookies.get("sitecore-cookie-consent")?.value;
+  skip: (req: NextRequest) => {
+    const consent = req.cookies.get("sitecore-cookie-consent")?.value;
 
-  //   // Consent が accepted でなければ PersonalizeProxy を skip
-  //   return consent !== "accepted";
-  // },
+    // Consent が accepted でなければ PersonalizeProxy を skip
+    return consent !== "accepted";
+  },
 });
 
 export default async function proxy(req: NextRequest) {
-  // return defineProxy(preview, locale, multisite, redirects, personalize).exec(
-  //   req,
-  // );
+  return defineProxy(preview, locale, multisite, redirects, personalize).exec(
+    req,
+  );
 
-  const response = await defineProxy(
-    preview,
-    locale,
-    multisite,
-    redirects,
-    personalize,
-  ).exec(req);
+  // const response = await defineProxy(
+  //   preview,
+  //   locale,
+  //   multisite,
+  //   redirects,
+  //   personalize,
+  // ).exec(req);
 
-  await initContentSdk({
-    config: {
-      contextId: process.env.SITECORE_EDGE_CONTEXT_ID!,
-      siteName: process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME!,
-    },
-    plugins: [
-      analyticsPlugin({
-        options: {
-          enableCookie: false,
-        },
-        adapter: analyticsProxyAdapter(req, response),
-      }),
+  // await initContentSdk({
+  //   config: {
+  //     contextId: process.env.SITECORE_EDGE_CONTEXT_ID!,
+  //     siteName: process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME!,
+  //   },
+  //   plugins: [
+  //     analyticsPlugin({
+  //       options: {
+  //         enableCookie: false,
+  //       },
+  //       adapter: analyticsProxyAdapter(req, response),
+  //     }),
 
-      eventsPlugin(),
+  //     eventsPlugin(),
 
-      personalizeServerPlugin({
-        options: {
-          enablePersonalizeCookie: false,
-        },
-        adapter: personalizeProxyAdapter(req, response),
-      }),
-    ],
-  });
+  //     personalizeServerPlugin({
+  //       options: {
+  //         enablePersonalizeCookie: false,
+  //       },
+  //       adapter: personalizeProxyAdapter(req, response),
+  //     }),
+  //   ],
+  // });
 
-  return response;
+  // return response;
 }
 
 export const config = {

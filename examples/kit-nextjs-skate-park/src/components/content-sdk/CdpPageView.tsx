@@ -22,8 +22,8 @@ const CdpPageView = (): JSX.Element => {
    * By default it is disabled in development mode
    */
   const disabled = () => {
-    return true;
-    //return process.env.NODE_ENV === 'development';
+    //return true;
+    return process.env.NODE_ENV === "development";
   };
 
   useEffect(() => {
