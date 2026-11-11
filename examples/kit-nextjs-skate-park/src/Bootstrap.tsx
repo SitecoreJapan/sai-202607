@@ -7,6 +7,10 @@ import {
   analyticsPlugin,
 } from "@sitecore-content-sdk/analytics-core";
 import config from "sitecore.config";
+import {
+  personalizeBrowserPlugin,
+  personalizeBrowserAdapter,
+} from "@sitecore-content-sdk/personalize";
 
 const Bootstrap = ({
   siteName,
