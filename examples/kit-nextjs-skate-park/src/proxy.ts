@@ -1,4 +1,4 @@
-import { type NextRequest } from 'next/server';
+import { type NextRequest } from "next/server";
 import {
   defineProxy,
   PreviewProxy,
@@ -6,15 +6,15 @@ import {
   PersonalizeProxy,
   RedirectsProxy,
   LocaleProxy,
-} from '@sitecore-content-sdk/nextjs/proxy';
-import sites from '.sitecore/sites.json';
-import scConfig from 'sitecore.config';
-import { routing } from './i18n/routing';
-import client from './lib/sitecore-client';
+} from "@sitecore-content-sdk/nextjs/proxy";
+import sites from ".sitecore/sites.json";
+import scConfig from "sitecore.config";
+import { routing } from "./i18n/routing";
+import client from "./lib/sitecore-client";
 
 const preview = new PreviewProxy({
-    client,
-    ...scConfig.api.edge,
+  client,
+  ...scConfig.api.edge,
 });
 
 const locale = new LocaleProxy({
@@ -72,11 +72,18 @@ const personalize = new PersonalizeProxy({
   // Certain paths are ignored by default (e.g. Next.js API routes), but you may wish to disable more.
   // By default it is disabled while in development mode.
   // This is an important performance consideration since Next.js Edge middleware runs on every request.
-  skip: () => false,
+  skip: (req: NextRequest) => {
+    const consent = req.cookies.get("sitecore-cookie-consent")?.value;
+
+    // Consent が accepted でなければ PersonalizeProxy を skip
+    return consent !== "accepted";
+  },
 });
 
 export default function proxy(req: NextRequest) {
-  return defineProxy(preview, locale, multisite, redirects, personalize).exec(req);
+  return defineProxy(preview, locale, multisite, redirects, personalize).exec(
+    req,
+  );
 }
 
 export const config = {
@@ -90,7 +97,7 @@ export const config = {
    * 7. all root files inside /public
    */
   matcher: [
-    '/',
-    '/((?!api/|\\.well-known/|sitemap|robots|llms|_next/|healthz|sitecore/api/|-/|favicon.ico|sc_logo.svg|ai/).*)',
+    "/",
+    "/((?!api/|\\.well-known/|sitemap|robots|llms|_next/|healthz|sitecore/api/|-/|favicon.ico|sc_logo.svg|ai/).*)",
   ],
 };

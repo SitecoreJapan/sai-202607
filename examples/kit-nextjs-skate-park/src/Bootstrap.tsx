@@ -34,6 +34,11 @@ const Bootstrap = ({
       return;
     }
 
+    // Cookie Consent を確認
+    const hasConsent = document.cookie
+      .split("; ")
+      .some((cookie) => cookie === "sitecore-cookie-consent=accepted");
+
     if (config.api.edge?.clientContextId) {
       initContentSdk({
         config: {
@@ -44,14 +49,14 @@ const Bootstrap = ({
         plugins: [
           analyticsPlugin({
             options: {
-              enableCookie: false,
+              enableCookie: hasConsent,
               cookieDomain: window.location.hostname.replace(/^www\./, ""),
             },
             adapter: analyticsBrowserAdapter(),
           }),
           eventsPlugin(),
           personalizeBrowserPlugin({
-            options: { enablePersonalizeCookie: false },
+            options: { enablePersonalizeCookie: hasConsent },
             adapter: personalizeBrowserAdapter(),
           }),
         ],
