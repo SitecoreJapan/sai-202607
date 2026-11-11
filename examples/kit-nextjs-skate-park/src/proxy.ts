@@ -109,7 +109,7 @@ export default async function proxy(req: NextRequest) {
     plugins: [
       analyticsPlugin({
         options: {
-          enableCookie: true,
+          enableCookie: false,
         },
         adapter: analyticsProxyAdapter(req, response),
       }),
@@ -118,7 +118,7 @@ export default async function proxy(req: NextRequest) {
 
       personalizeServerPlugin({
         options: {
-          enablePersonalizeCookie: true,
+          enablePersonalizeCookie: false,
         },
         adapter: personalizeProxyAdapter(req, response),
       }),
