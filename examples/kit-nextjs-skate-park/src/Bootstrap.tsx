@@ -44,14 +44,14 @@ const Bootstrap = ({
         plugins: [
           analyticsPlugin({
             options: {
-              enableCookie: false,
+              enableCookie: true,
               cookieDomain: window.location.hostname.replace(/^www\./, ""),
             },
             adapter: analyticsBrowserAdapter(),
           }),
           eventsPlugin(),
           personalizeBrowserPlugin({
-            options: { enablePersonalizeCookie: false },
+            options: { enablePersonalizeCookie: true },
             adapter: personalizeBrowserAdapter(),
           }),
         ],
