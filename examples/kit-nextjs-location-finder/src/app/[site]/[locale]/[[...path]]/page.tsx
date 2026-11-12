@@ -60,6 +60,8 @@ type PageProps = {
   }>;
 };
 
+export const revalidate = 10; // Revalidate every 60 seconds
+
 export default async function Page({ params }: PageProps) {
   const { site, locale, path } = await params;
   const draft = await draftMode();
