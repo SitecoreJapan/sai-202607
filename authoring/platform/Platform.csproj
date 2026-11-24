@@ -70,6 +70,7 @@
     <None Include="README.md" />
     <None Include="web.config" />
     <Content Include="App_Config\Include\CustomSavingEvent.config" />
+    <Content Include="App_Config\Include\zzzlanguagesort.config" />
   </ItemGroup>
     <ItemGroup>
     <Compile Include="Events\CustomSavingEvent.cs" />

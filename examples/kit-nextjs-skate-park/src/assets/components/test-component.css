@@ -1,0 +1,30 @@
+.test-component {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 320px;
+  margin-inline: auto;
+  padding: 32px 24px;
+  background-color: #fff;
+}
+
+.test-component__text {
+  margin: 0;
+  color: #141414;
+  font-family: var(--font-roboto), sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.test-component__image {
+  display: block;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
