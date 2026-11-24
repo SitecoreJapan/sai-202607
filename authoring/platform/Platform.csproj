@@ -70,7 +70,9 @@
     <None Include="README.md" />
     <None Include="web.config" />
     <Content Include="App_Config\Include\CustomSavingEvent.config" />
-    <Content Include="App_Config\Include\zzzlanguagesort.config" />
+    <Content Include="App_Config\Include\zzzChangeDefaultLanguage.config" />
+    <Content Include="App_Data\items\core\localization\items.core.ja-JP.dat" />
+    <Content Include="App_Data\items\master\localization\items.master.ja-JP.dat" />
   </ItemGroup>
     <ItemGroup>
     <Compile Include="Events\CustomSavingEvent.cs" />
