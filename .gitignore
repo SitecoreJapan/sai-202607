@@ -33,6 +33,10 @@ Thumbs.db
 *.ilk
 *.log
 [Bb]in
+!authoring/platform/bin/
+authoring/platform/bin/*
+!authoring/platform/bin/Support.DuplicateItem.dll
+!authoring/platform/bin/.gitkeep
 [Dd]ebug*/
 *.lib
 *.sbr
