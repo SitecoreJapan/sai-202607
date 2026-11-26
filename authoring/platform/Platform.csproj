@@ -73,9 +73,11 @@
     <Content Include="App_Config\Include\zzzChangeDefaultLanguage.config" />
     <Content Include="App_Data\items\core\localization\items.core.ja-JP.dat" />
     <Content Include="App_Data\items\master\localization\items.master.ja-JP.dat" />
+    <Content Include="App_Config\Include\z.Company.Foundation.SitecoreExtensions.DuplicateItem.config" />
   </ItemGroup>
     <ItemGroup>
     <Compile Include="Events\CustomSavingEvent.cs" />
+    <Compile Include="Command\DuplicateItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Config\Include\" />
